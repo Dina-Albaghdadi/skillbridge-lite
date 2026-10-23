@@ -98,6 +98,9 @@ export function FitAnalysisPanel({ profile, opportunity, request, profileLink }:
         <ResultSection title="Potential Gaps" items={result?.potentialGaps?.map((x) => ({ title: x.requirement, details: [{ label: "Reason", text: x.reason }] }))} empty="No potential gaps were identified in the supplied profile." status={state.status} />
         <ResultSection title="Recommended Next Steps" items={result?.recommendedNextSteps?.map((x) => ({ title: x.action, details: [{ label: "Reason", text: x.reason }] }))} empty="No next steps were returned by the AI service." status={state.status} />
       </div>
+      {state.status === "success" && (
+        <p className="mt-6 text-xs text-muted-foreground">This analysis is an AI-assisted estimate based only on the information in your profile. It is not a final judgment of your abilities and does not predict hiring outcomes.</p>
+      )}
     </section>
   );
 }
